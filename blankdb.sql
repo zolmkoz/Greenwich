@@ -281,7 +281,7 @@ COMMIT;
 
 INSERT INTO `users` (`id`, `first_name`, `last_name`, `gender`, `email`, `username`, `password`, `profile_pic`, `created_at`, `updated_at`, `ac_status`) 
 VALUES 
-
+('1', 'Nguyen', 'Trung Nguyen', '1', 'zolmkoz1@gmail.com', 'zolmkoz1', 'f9c81dd99f5aec80fd33bb7964fb7267', 'default_profile.jpg', current_timestamp(), current_timestamp(), '0'),
 ('2', 'Chi', 'Luan', '1', '2@gmail.com', 'username2', 'f9c81dd99f5aec80fd33bb7964fb7267', 'default_profile.jpg', current_timestamp(), current_timestamp(), '1'),
 ('3', 'Chi', 'Luan', '1', '3@gmail.com', 'username3', 'f9c81dd99f5aec80fd33bb7964fb7267', 'default_profile.jpg', current_timestamp(), current_timestamp(), '1'),
 ('4', 'Chi', 'Luan', '1', '4@gmail.com', 'username4', 'f9c81dd99f5aec80fd33bb7964fb7267', 'default_profile.jpg', current_timestamp(), current_timestamp(), '1'),
