@@ -2,27 +2,25 @@
 require_once('admin_functions.php');
 require_once '../../assets/php/send_code.php';
 
-if(isset($_GET['verify_user'])){
+if (isset($_GET['verify_user'])) {
     $user = getUser($_POST['user_id']);
-    if(verifyEmail($user['email'])){
-    
-        $response['status']=true;
+    if (verifyEmail($user['email'])) {
 
-    }else{
-        $response['status']=false;
+        $response['status'] = true;
+    } else {
+        $response['status'] = false;
     }
 
     echo json_encode($response);
 }
 
-if(isset($_GET['block_user'])){
-   
-    if(blockUserByAdmin($_POST['user_id'])){
-    
-        $response['status']=true;
+if (isset($_GET['block_user'])) {
 
-    }else{
-        $response['status']=false;
+    if (blockUserByAdmin($_POST['user_id'])) {
+
+        $response['status'] = true;
+    } else {
+        $response['status'] = false;
     }
 
     echo json_encode($response);
@@ -30,14 +28,13 @@ if(isset($_GET['block_user'])){
 
 
 
-if(isset($_GET['unblock_user'])){
-   
-    if(unblockUserByAdmin($_POST['user_id'])){
-    
-        $response['status']=true;
+if (isset($_GET['unblock_user'])) {
 
-    }else{
-        $response['status']=false;
+    if (unblockUserByAdmin($_POST['user_id'])) {
+
+        $response['status'] = true;
+    } else {
+        $response['status'] = false;
     }
 
     echo json_encode($response);

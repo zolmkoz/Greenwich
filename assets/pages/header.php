@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
     <link href="assets/css/custom.css" rel="stylesheet">
     <link rel="icon" href="assets/images/icon.png">
-    <title><?=$data['page_title']?></title>
+    <title><?= $data['page_title'] ?></title>
 </head>
 
 <body>

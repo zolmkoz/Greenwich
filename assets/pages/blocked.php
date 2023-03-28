@@ -1,4 +1,3 @@
-
 <?php
 global $user;
 ?>
@@ -11,7 +10,7 @@ global $user;
 
                     <img class="mb-4" src="assets/images/university-of-greenwich-high-resolution-logo-color-on-transparent-background.png" alt="" height="100">
                 </div>
-                <h1 class="h5 mb-3 fw-normal">Hello, <?=$user['first_name'].' '.$user['last_name'].' ('.$user['email'].') '?>Your Account Is Blocked By Admin, please contact admin@greenwich.com</h1>
+                <h1 class="h5 mb-3 fw-normal">Hello, <?= $user['first_name'] . ' ' . $user['last_name'] . ' (' . $user['email'] . ') ' ?>Your Account Is Blocked By Admin, please contact admin@greenwich.com</h1>
 
 
 
