@@ -4,9 +4,9 @@
             <form method="post" action="assets/php/actions.php?login">
                 <div class="d-flex justify-content-center">
 
-                    <img class="mb-4" src="assets/images/GreenwichGram.svg" alt="GreenwichGram" height="100">
+                    <img class="mb-4" src="assets/images/university-of-greenwich-high-resolution-logo-color-on-transparent-background.png   " alt="GREENWICH-Social" height="45">
                 </div>
-                <h1 class="h5 mb-3 fw-normal">Please sign in</h1>
+                <h1 class="h5 mb-3 fw-normal">Sign In</h1>
 
                 <div class="form-floating">
                     <input type="text" name="username_email" value="<?=showFormData('username_email')?>" class="form-control rounded-0" placeholder="username/email">
@@ -20,10 +20,10 @@
                 <?=showError('password')?>
                 <?=showError('checkuser')?>
 
-                <a href="?forgotpassword&newfp" class="text-decoration-none">Forgot password ?</a>
+                <a href="?forgotpassword&newfp" class="text-decoration-none">Forgot password?</a>
                 
                 <div class="mt-3 d-flex justify-content-between align-items-center">
-                    <button class="btn btn-primary" type="submit">Sign in</button>
+                    <button class="btn btn-primary" type="submit">Sign In</button>
                     <a href="?signup" class="text-decoration-none">Create New Account</a>
 
 

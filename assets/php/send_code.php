@@ -22,12 +22,12 @@ global $mail;
         $mail->Host       = 'smtp.gmail.com';                     //Set the SMTP server to send through
         $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
         $mail->Username   = 'nguyenntgcc19275@fpt.edu.vn';                     //SMTP username
-        $mail->Password   = 'zolmkoz183461';                               //SMTP password
+        $mail->Password   = 'sizuszorzsepbarm';                               //SMTP password
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
         $mail->Port       = 465;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
     
         //Recipients
-        $mail->setFrom('nguyenntgcc19275@fpt.edu.vn', 'GreenwichGram');    //Add a recipient
+        $mail->setFrom('nguyenntgcc19275@fpt.edu.vn', 'UoGSocial');    //Add a recipient
         $mail->addAddress($email);               //Name is optional
     
         //Content

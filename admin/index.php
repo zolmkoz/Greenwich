@@ -9,7 +9,8 @@ $admin = getAdmin($_SESSION['admin_auth']);
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>GreenwichGram | Dashboard</title>
+  <link rel="icon" href="dist/img/icon.png">
+  <title>UoGSocial | Dashboard</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -37,7 +38,8 @@ $admin = getAdmin($_SESSION['admin_auth']);
 
   <!-- Preloader -->
   <div class="preloader flex-column justify-content-center align-items-center">
-    <img class="animation__shake" src="../assets/images/icon-3.png" alt="AdminLTELogo" height="60" width="60">
+    <img class="animation__shake" src="../assets/images/icon.png" alt="UoGSocial" height="60" width="60">
+                <h3>UoGSocial Admin Panel</h3>
   </div>
 
   <!-- Navbar -->
@@ -93,8 +95,8 @@ $admin = getAdmin($_SESSION['admin_auth']);
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="index.php" class="brand-link">
-      <img src="../assets/images/icon-3.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-      <span class="brand-text font-weight-light">GreenwichGram</span>
+      <img src="../assets/images/icon.png" alt="UoGSocial Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+      <span class="brand-text font-weight-light">UoGSocial</span>
     </a>
 
     <div class="sidebar">
@@ -184,7 +186,7 @@ $admin = getAdmin($_SESSION['admin_auth']);
                 <p>Total Users</p>
               </div>
               <div class="icon">
-                <i class="ion ion-bag"></i>
+                <i class="ion ion-person"></i> 
               </div>
             </div>
           </div>
@@ -212,7 +214,7 @@ $admin = getAdmin($_SESSION['admin_auth']);
                 <p>Total Comments</p>
               </div>
               <div class="icon">
-                <i class="ion ion-person-add"></i>
+                <i class="ion ion-chatbox"></i>
               </div>
             
             </div>
@@ -226,7 +228,7 @@ $admin = getAdmin($_SESSION['admin_auth']);
                 <p>Total Likes</p>
               </div>
               <div class="icon">
-                <i class="ion ion-pie-graph"></i>
+                <i class="ion ion-heart"></i>
               </div>
             </div>
           </div>

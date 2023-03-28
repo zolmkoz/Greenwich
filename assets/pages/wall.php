@@ -255,7 +255,7 @@ continue;
 
 
             <div>
-                <h6 class="text-muted p-2">You Can Follow Them</h6>
+                <h6 class="text-muted p-2">Suggestions for you</h6>
                 <?php
 foreach($follow_suggestions as $suser){
     ?>

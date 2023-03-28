@@ -3,12 +3,12 @@
         <div class="container col-lg-9 col-sm-12 col-md-10 d-flex flex-lg-row flex-md-row flex-sm-column justify-content-between">
             <div class="d-flex justify-content-between col-lg-8 col-sm-12">
                 <a class="navbar-brand" href="?">
-                    <img src="assets/images/GreenwichGramwall.png" alt="" height="28">
+                    <img src="assets/images/university-of-greenwich-high-resolution-logo-color-on-transparent-background.png" alt="" height="28">
 
                 </a>
 
                 <form class="d-flex" id="searchform">
-                    <input class="form-control me-2" type="search" id="search" placeholder="Looking for someone.."
+                    <input class="form-control me-2" type="search" id="search" placeholder="Search..."
                         aria-label="Search" autocomplete="off">
 <div class="bg-white text-end rounded border shadow py-3 px-4 mt-5" style="display:none;position:absolute;z-index:+99;" id="search_result" data-bs-auto-close="true">
 <button type="button" class="btn-close" aria-label="Close" id="close_search"></button>

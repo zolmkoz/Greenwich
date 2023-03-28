@@ -49,15 +49,15 @@ if(isset($_SESSION['Auth']) && $user['ac_status']==1 && !$pagecount){
  
   
 }elseif(isset($_GET['signup'])){
-    showPage('header',['page_title'=>'GreenwichGram - SignUp']);
+    showPage('header',['page_title'=>'UoGSocial - SignUp']);
     showPage('signup');
 }elseif(isset($_GET['login'])){
    
-    showPage('header',['page_title'=>'GreenwichGram - Login']);
+    showPage('header',['page_title'=>'UoGSocial - Login']);
     showPage('login');
 }elseif(isset($_GET['forgotpassword'])){
     
-    showPage('header',['page_title'=>'GreenwichGram - Forgot Password']);
+    showPage('header',['page_title'=>'UoGSocial - Forgot Password']);
     showPage('forgot_password');
 }else{
     if(isset($_SESSION['Auth']) && $user['ac_status']==1){
@@ -72,7 +72,7 @@ if(isset($_SESSION['Auth']) && $user['ac_status']==1 && !$pagecount){
         showPage('header',['page_title'=>'Blocked']);
         showPage('blocked');
     }else{
-        showPage('header',['page_title'=>'GreenwichGram - Login']);
+        showPage('header',['page_title'=>'UoGSocial - Login']);
         showPage('login');
     }
   

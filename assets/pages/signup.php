@@ -4,7 +4,7 @@
             <form method="post" action="assets/php/actions.php?signup">
                 <div class="d-flex justify-content-center">
 
-                    <img class="mb-4" src="assets/images/GreenwichGram.svg" alt="GreenwichGram" height="100">
+                    <img class="mb-4" src="assets/images/university-of-greenwich-high-resolution-logo-color-on-transparent-background.png" alt="UoGSocial" height="45">
                 </div>
                 <h1 class="h5 mb-3 fw-normal">Create new account</h1>
                 <div class="d-flex">
@@ -64,7 +64,7 @@
 
                 <div class="mt-3 d-flex justify-content-between align-items-center">
                     <button class="btn btn-primary" type="submit">Sign Up</button>
-                    <a href="?login" class="text-decoration-none">Already have an account ?</a>
+                    <a href="?login" class="text-decoration-none">Already have an account?</a>
 
 
                 </div>

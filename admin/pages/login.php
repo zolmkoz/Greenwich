@@ -8,6 +8,7 @@ if(isset($_SESSION['admin_auth'])) header('Location:../');
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="../dist/img/icon.png">
   <title>Admin Panel | Log in</title>
 
   <!-- Google Font: Source Sans Pro -->
@@ -22,7 +23,7 @@ if(isset($_SESSION['admin_auth'])) header('Location:../');
 <body class="hold-transition login-page">
 <div class="login-box">
   <div class="login-logo">
-    <a href="../../"><b>GreenwichGram</b> Admin Panel</a>
+    <a href="../../"><b>UoGSocial</b> Admin Panel</a>
   </div>
   <!-- /.login-logo -->
   <div class="card">

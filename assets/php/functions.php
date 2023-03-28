@@ -142,7 +142,12 @@ function like($post_id){
     
 }
 
-
+//function for creating comments
+function createNotification($from_user_id,$to_user_id,$msg,$post_id=0){
+    global $db;
+    $query="INSERT INTO notifications(from_user_id,to_user_id,message,post_id) VALUES($from_user_id,$to_user_id,'$msg',$post_id)";
+    mysqli_query($db,$query);    
+}
 
 
 //function for creating comments
@@ -164,12 +169,7 @@ function addComment($post_id,$comment){
 }
 
 
-//function for creating comments
-function createNotification($from_user_id,$to_user_id,$msg,$post_id=0){
-    global $db;
-    $query="INSERT INTO notifications(from_user_id,to_user_id,message,post_id) VALUES($from_user_id,$to_user_id,'$msg',$post_id)";
-    mysqli_query($db,$query);    
-}
+
 
 
 
@@ -181,38 +181,7 @@ function getComments($post_id){
     return mysqli_fetch_all($run,true);
 }
 
-//get notifications
 
-function getNotifications(){
-  $cu_user_id = $_SESSION['userdata']['id'];
-
-    global $db;
-    $query="SELECT * FROM notifications WHERE to_user_id=$cu_user_id ORDER BY id DESC";
-    $run = mysqli_query($db,$query);
-    return mysqli_fetch_all($run,true);
-}
-
-
-
-function getUnreadNotificationsCount(){
-    $cu_user_id = $_SESSION['userdata']['id'];
-  
-      global $db;
-      $query="SELECT count(*) as row FROM notifications WHERE to_user_id=$cu_user_id && read_status=0 ORDER BY id DESC";
-      $run = mysqli_query($db,$query);
-      return mysqli_fetch_assoc($run)['row'];
-  }
-
-  function show_time($time){
-    return '<time style="font-size:small" class="timeago text-muted text-small" datetime="'.$time.'"></time>';
-  }
-
-  function setNotificationStatusAsRead(){
-       $cu_user_id = $_SESSION['userdata']['id'];
-      global $db;
-      $query="UPDATE notifications SET read_status=1 WHERE to_user_id=$cu_user_id";
-      return mysqli_query($db,$query);
-  }
 
 
 
@@ -388,27 +357,6 @@ function validateLoginForm($form_data){
     
     }
 
-
-//for checking the user
-function checkUser($login_data){
-    global $db;
- $username_email = $login_data['username_email'];
- $password=md5($login_data['password']);
-
- $query = "SELECT * FROM users WHERE (email='$username_email' || username='$username_email') && password='$password'";
- $run = mysqli_query($db,$query);
- $data['user'] = mysqli_fetch_assoc($run)??array();
- if(count($data['user'])>0){
-     $data['status']=true;
- }else{
-    $data['status']=false;
-
- }
-
- return $data;
-}
-
-
 //for getting userdata by id
 function getUser($user_id){
     global $db;
@@ -429,16 +377,7 @@ foreach($list as $user){
     }
 }
 
-return $filter_list;
-}
-
-//for checking the user is followed by current user or not
-function checkFollowStatus($user_id){
-    global $db;
-    $current_user = $_SESSION['userdata']['id'];
-    $query="SELECT count(*) as row FROM follow_list WHERE follower_id=$current_user && user_id=$user_id";
-    $run = mysqli_query($db,$query);
-    return mysqli_fetch_assoc($run)['row'];
+    return $filter_list;
 }
 
 //for checking the user is followed by current user or not
@@ -450,7 +389,36 @@ function checkBlockStatus($current_user,$user_id){
     return mysqli_fetch_assoc($run)['row'];
 }
 
+//for checking the user is followed by current user or not
+function checkFollowStatus($user_id){
+    global $db;
+    $current_user = $_SESSION['userdata']['id'];
+    $query="SELECT count(*) as row FROM follow_list WHERE follower_id=$current_user && user_id=$user_id";
+    $run = mysqli_query($db,$query);
+    return mysqli_fetch_assoc($run)['row'];
+}
 
+
+//for checking the user
+function checkUser($login_data){
+    global $db;
+ $username_email = $login_data['username_email'];
+ $password=md5($login_data['password']);
+
+ $query = "SELECT * FROM users WHERE (email='$username_email' || username='$username_email') && password='$password'";
+ $run = mysqli_query($db,$query);
+ $data['user'] = mysqli_fetch_assoc($run)??array();
+ if(count($data['user'])>0){
+     $data['status']=true;
+ }else{
+    $data['status']=false;
+
+ }
+
+ return $data;
+}
+
+//for checking block status user
 function checkBS($user_id){
     global $db;
     $current_user = $_SESSION['userdata']['id'];
@@ -458,7 +426,7 @@ function checkBS($user_id){
     $run = mysqli_query($db,$query);
     return mysqli_fetch_assoc($run)['row'];
 }
-//
+
 
 //for getting users for follow suggestions
 function getFollowSuggestions(){
@@ -466,6 +434,14 @@ function getFollowSuggestions(){
 
     $current_user = $_SESSION['userdata']['id'];
     $query = "SELECT * FROM users WHERE id!=$current_user";
+    $run = mysqli_query($db,$query);
+    return mysqli_fetch_all($run,true);
+}
+
+//get following count
+function getFollowing($user_id){
+    global $db;
+    $query = "SELECT * FROM follow_list WHERE follower_id=$user_id";
     $run = mysqli_query($db,$query);
     return mysqli_fetch_all($run,true);
 }
@@ -478,12 +454,13 @@ function getFollowers($user_id){
     return mysqli_fetch_all($run,true);
 }
 
-//get followers count
-function getFollowing($user_id){
+//for getting post
+function getPosterId($post_id){
     global $db;
-    $query = "SELECT * FROM follow_list WHERE follower_id=$user_id";
-    $run = mysqli_query($db,$query);
-    return mysqli_fetch_all($run,true);
+ $query = "SELECT user_id FROM posts WHERE id=$post_id";
+ $run = mysqli_query($db,$query);
+ return mysqli_fetch_assoc($run)['user_id'];
+
 }
 
 //for getting posts by id
@@ -492,15 +469,6 @@ function getPostById($user_id){
  $query = "SELECT * FROM posts WHERE user_id=$user_id ORDER BY id DESC";
  $run = mysqli_query($db,$query);
  return mysqli_fetch_all($run,true);
-
-}
-
-//for getting post
-function getPosterId($post_id){
-    global $db;
- $query = "SELECT user_id FROM posts WHERE id=$post_id";
- $run = mysqli_query($db,$query);
- return mysqli_fetch_assoc($run)['user_id'];
 
 }
 
@@ -513,7 +481,20 @@ function searchUser($keyword){
 
 }
 
+//function for verify email
+function verifyEmail($email){
+    global $db;
+    $query="UPDATE users SET ac_status=1 WHERE email='$email'";
+    return mysqli_query($db,$query);
+}
 
+//function for verify email
+function resetPassword($email,$password){
+    global $db;
+    $password=md5($password);
+    $query="UPDATE users SET password='$password' WHERE email='$email'";
+    return mysqli_query($db,$query);
+}
 
 
 //for getting userdata by username
@@ -584,20 +565,7 @@ function createUser($data){
  return mysqli_query($db,$query);
 }
 
-//function for verify email
-function verifyEmail($email){
-    global $db;
-    $query="UPDATE users SET ac_status=1 WHERE email='$email'";
-    return mysqli_query($db,$query);
-}
 
-//function for verify email
-function resetPassword($email,$password){
-    global $db;
-    $password=md5($password);
-    $query="UPDATE users SET password='$password' WHERE email='$email'";
-    return mysqli_query($db,$query);
-}
 
 //for validating update form
 function validateUpdateForm($form_data,$image_data){
@@ -631,7 +599,7 @@ function validateUpdateForm($form_data,$image_data){
        if($image_data['name']){
            $image = basename($image_data['name']);
            $type = strtolower(pathinfo($image,PATHINFO_EXTENSION));
-           $size = $image_data['size']/1000;
+           $size = $image_data['size']/5000;
 
            if($type!='jpg' && $type!='jpeg' && $type!='png'){
             $response['msg']="Only jpg,jpeg,png images are allowed";
@@ -639,8 +607,8 @@ function validateUpdateForm($form_data,$image_data){
             $response['field']='profile_pic';
         }
 
-        if($size>1000){
-            $response['msg']="Upload image less then 1 MB";
+        if($size>5000){
+            $response['msg']="Upload image less then 5 MB";
             $response['status']=false;
             $response['field']='profile_pic';
         }
@@ -700,16 +668,16 @@ function validatePostImage($image_data){
        if($image_data['name']){
            $image = basename($image_data['name']);
            $type = strtolower(pathinfo($image,PATHINFO_EXTENSION));
-           $size = $image_data['size']/1000;
+           $size = $image_data['size']/5000;
 
-           if($type!='jpg' && $type!='jpeg' && $type!='png'){
-            $response['msg']="Only jpg,jpeg,png images are allowed";
+           if($type!='jpg' && $type!='jpeg' && $type!='png' && $type!='gif'){
+            $response['msg']="Only jpg,jpeg,png,gif images are allowed";
             $response['status']=false;
             $response['field']='post_img';
         }
 
-        if($size>2000){
-            $response['msg']="Upload image less then 1 MB";
+        if($size>5000){
+            $response['msg']="Upload image less then 5 MB";
             $response['status']=false;
             $response['field']='post_img';
         }
@@ -735,7 +703,37 @@ $user_id = $_SESSION['userdata']['id'];
     return mysqli_query($db,$query);
    }
 
-   // for getting posts
 
-   
+   //get notifications
+
+function getNotifications(){
+  $cu_user_id = $_SESSION['userdata']['id'];
+
+    global $db;
+    $query="SELECT * FROM notifications WHERE to_user_id=$cu_user_id ORDER BY id DESC";
+    $run = mysqli_query($db,$query);
+    return mysqli_fetch_all($run,true);
+}
+
+
+
+function getUnreadNotificationsCount(){
+    $cu_user_id = $_SESSION['userdata']['id'];
+  
+      global $db;
+      $query="SELECT count(*) as row FROM notifications WHERE to_user_id=$cu_user_id && read_status=0 ORDER BY id DESC";
+      $run = mysqli_query($db,$query);
+      return mysqli_fetch_assoc($run)['row'];
+  }
+
+  function show_time($time){
+    return '<time style="font-size:small" class="timeago text-muted text-small" datetime="'.$time.'"></time>';
+  }
+
+  function setNotificationStatusAsRead(){
+       $cu_user_id = $_SESSION['userdata']['id'];
+      global $db;
+      $query="UPDATE notifications SET read_status=1 WHERE to_user_id=$cu_user_id";
+      return mysqli_query($db,$query);
+  }
 ?>
