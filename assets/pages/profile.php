@@ -110,6 +110,14 @@ global $user;
                                     </div>
                                     <div class="d-flex flex-column align-items-end flex-fill">
                                         <div class=""></div>
+                                        <!-- Delete post in profile -->
+                                        <div class="dropdown">
+                                                <i class="bi bi-three-dots-vertical" id="option<?= $post['id'] ?>" data-bs-toggle="dropdown" aria-expanded="false"></i>
+                                                <ul class="dropdown-menu" aria-labelledby="option<?= $post['id'] ?>">
+                                                    <li><a class="dropdown-item" href="assets/php/actions.php?deletepost=<?= $post['id'] ?>"><i class="bi bi-trash-fill"></i> Delete Post</a></li>
+                                                </ul>
+                                            </div>
+
                                         <div class="dropdown">
                                             <span class="<?= count($likes) < 1 ? 'disabled' : '' ?>" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                                                 <?= count($likes) ?> likes

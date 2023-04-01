@@ -15,16 +15,6 @@ if (isset($_GET['block'])) {
     }
 }
 
-if (isset($_GET['deletepost'])) {
-    $post_id = $_GET['deletepost'];
-    if (deletePost($post_id)) {
-        header("location:{$_SERVER['HTTP_REFERER']}");
-    } else {
-        echo "something went wrong";
-    }
-}
-
-
 
 //for managaing signup
 if (isset($_GET['signup'])) {
@@ -186,5 +176,14 @@ if (isset($_GET['addpost'])) {
     } else {
         $_SESSION['error'] = $response;
         header("location:../../");
+    }
+}
+
+if (isset($_GET['deletepost'])) {
+    $post_id = $_GET['deletepost'];
+    if (deletePost($post_id)) {
+        header("location:{$_SERVER['HTTP_REFERER']}");
+    } else {
+        echo "something went wrong";
     }
 }
