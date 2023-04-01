@@ -296,12 +296,20 @@ function validateSignupForm($form_data)
         $response['msg'] = "Password is not given";
         $response['status'] = false;
         $response['field'] = 'password';
+    }elseif (strlen($form_data['password']) < 8) {
+        $response['msg'] = "Password must be at least 8 characters long";
+        $response['status'] = false;
+        $response['field'] = 'password';
     }
 
     if (!$form_data['username']) {
         $response['msg'] = "Username is not given";
         $response['status'] = false;
         $response['field'] = 'username';
+    }elseif (strlen($form_data['username']) < 6) {
+        $response['msg'] = "Username must be at least 6 characters long";
+        $response['status'] = false;
+        $response['field'] = 'password';
     }
 
     if (!$form_data['email']) {
@@ -309,6 +317,12 @@ function validateSignupForm($form_data)
         $response['status'] = false;
         $response['field'] = 'email';
     }
+    //check email FPT Education
+    // elseif (!preg_match('/@fpt\.edu\.vn$/', $form_data['email'])) {
+    //     $response['msg'] = "Email must be a valid @fpt.edu.vn address";
+    //     $response['status'] = false;
+    //     $response['field'] = 'email';
+    // }
 
     if (!$form_data['last_name']) {
         $response['msg'] = "Last name is not given";
