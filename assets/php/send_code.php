@@ -35,7 +35,8 @@ function sendCode($email, $subject, $code)
         //Content
         $mail->isHTML(true);                                  //Set email format to HTML
         $mail->Subject = $subject;
-        $mail->Body    = 'Your Verification code is : <b>' . $code . '</b>';
+        $mail->Body    = 'Your Verification code is : <b>' . $code . '</b> <br>
+                        (The OTP will expire in 5 minutes)';
         $mail->send();
     } catch (Exception $e) {
         echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";

@@ -75,9 +75,9 @@ if (isset($_GET['verify_email'])) {
             echo "something is wrong";
         }
     } else {
-        $response['msg'] = 'Incorrect verifictaion code !';
+        $response['msg'] = 'Incorrect verification OTP code!';
         if (!$_POST['code']) {
-            $response['msg'] = 'enter 6 digit code !';
+            $response['msg'] = 'Please enter 6 digit code!';
         }
         $response['field'] = 'email_verify';
         $_SESSION['error'] = $response;
@@ -88,12 +88,12 @@ if (isset($_GET['verify_email'])) {
 
 if (isset($_GET['forgotpassword'])) {
     if (!$_POST['email']) {
-        $response['msg'] = "Enter your email id !";
+        $response['msg'] = "Email is not given";
         $response['field'] = 'email';
         $_SESSION['error'] = $response;
         header('location:../../?forgotpassword');
     } elseif (!isEmailRegistered($_POST['email'])) {
-        $response['msg'] = "Email id is not registered";
+        $response['msg'] = "Email is not registered";
         $response['field'] = 'email';
         $_SESSION['error'] = $response;
         header('location:../../?forgotpassword');
@@ -122,7 +122,7 @@ if (isset($_GET['verifycode'])) {
         $_SESSION['auth_temp'] = true;
         header('location:../../?forgotpassword');
     } else {
-        $response['msg'] = 'Incorrect verifictaion code !';
+        $response['msg'] = 'Incorrect verification OTP code!';
         if (!$_POST['code']) {
             $response['msg'] = 'Enter 6 digit code !';
         }

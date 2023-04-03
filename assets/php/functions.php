@@ -296,8 +296,8 @@ function validateSignupForm($form_data)
         $response['msg'] = "Password is not given";
         $response['status'] = false;
         $response['field'] = 'password';
-    }elseif (strlen($form_data['password']) < 8) {
-        $response['msg'] = "Password must be at least 8 characters long";
+    }elseif (strlen($form_data['password']) < 6) {
+        $response['msg'] = "Password must be at least 6 characters long";
         $response['status'] = false;
         $response['field'] = 'password';
     }
@@ -335,7 +335,7 @@ function validateSignupForm($form_data)
         $response['field'] = 'first_name';
     }
     if (isEmailRegistered($form_data['email'])) {
-        $response['msg'] = "Email id is already registered";
+        $response['msg'] = "Email is already registered";
         $response['status'] = false;
         $response['field'] = 'email';
     }
@@ -639,7 +639,7 @@ function validateUpdateForm($form_data, $image_data)
     if ($image_data['name']) {
         $image = basename($image_data['name']);
         $type = strtolower(pathinfo($image, PATHINFO_EXTENSION));
-        $size = $image_data['size'] / 5000;
+        $size = $image_data['size'] / 1000;
 
         if ($type != 'jpg' && $type != 'jpeg' && $type != 'png') {
             $response['msg'] = "Only jpg,jpeg,png images are allowed";
@@ -648,7 +648,7 @@ function validateUpdateForm($form_data, $image_data)
         }
 
         if ($size > 5000) {
-            $response['msg'] = "Upload image less then 5 MB";
+            $response['msg'] = "Upload image less than 5 MB";
             $response['status'] = false;
             $response['field'] = 'profile_pic';
         }
@@ -708,7 +708,7 @@ function validatePostImage($image_data)
     if ($image_data['name']) {
         $image = basename($image_data['name']);
         $type = strtolower(pathinfo($image, PATHINFO_EXTENSION));
-        $size = $image_data['size'] / 5000;
+        $size = $image_data['size'] / 1000;
 
         if ($type != 'jpg' && $type != 'jpeg' && $type != 'png' && $type != 'gif') {
             $response['msg'] = "Only jpg,jpeg,png,gif images are allowed";
@@ -717,7 +717,7 @@ function validatePostImage($image_data)
         }
 
         if ($size > 5000) {
-            $response['msg'] = "Upload image less then 5 MB";
+            $response['msg'] = "Upload image less than 5 MB";
             $response['status'] = false;
             $response['field'] = 'post_img';
         }

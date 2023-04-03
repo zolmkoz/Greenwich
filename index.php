@@ -50,7 +50,7 @@ if (isset($_SESSION['Auth']) && $user['ac_status'] == 1 && !$pagecount) {
     showPage('signup');
 } elseif (isset($_GET['login'])) {
 
-    showPage('header', ['page_title' => 'UoGSocial - Login']);
+    showPage('header', ['page_title' => 'UoGSocial - SignIn']);
     showPage('login');
 } elseif (isset($_GET['forgotpassword'])) {
 
@@ -69,7 +69,7 @@ if (isset($_SESSION['Auth']) && $user['ac_status'] == 1 && !$pagecount) {
         showPage('header', ['page_title' => 'Blocked']);
         showPage('blocked');
     } else {
-        showPage('header', ['page_title' => 'UoGSocial - Login']);
+        showPage('header', ['page_title' => 'UoGSocial - SignIn']);
         showPage('login');
     }
 }
