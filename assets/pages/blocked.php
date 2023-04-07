@@ -8,7 +8,7 @@ global $user;
             <form>
                 <div class="d-flex justify-content-center">
 
-                    <img class="mb-4" src="assets/images/university-of-greenwich-high-resolution-logo-color-on-transparent-background.png" alt="" height="100">
+                    <img class="mb-4" src="assets/images/university-of-greenwich-high-resolution-logo-color-on-transparent-background.png" alt="" height="45">
                 </div>
                 <h1 class="h5 mb-3 fw-normal">Hello, <?= $user['first_name'] . ' ' . $user['last_name'] . ' (' . $user['email'] . ') ' ?>Your Account Is Blocked By Admin, please contact admin@greenwich.com</h1>
 
