@@ -70,7 +70,7 @@ if (isset($_GET['verify_email'])) {
     $code = $_SESSION['code'];
     if ($code == $user_code) {
         if (verifyEmail($_SESSION['userdata']['email'])) {
-            header('location:../../');
+            header('location:../../?verify_email');
         } else {
             echo "something is wrong";
         }
@@ -81,7 +81,7 @@ if (isset($_GET['verify_email'])) {
         }
         $response['field'] = 'email_verify';
         $_SESSION['error'] = $response;
-        header('location:../../');
+        header('location:../../?verify_email');
     }
 }
 
