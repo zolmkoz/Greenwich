@@ -1,5 +1,5 @@
 
-# UoG Social Network
+# 🌐 UoG Social Network
 ![Logo](https://greenwichsn.000webhostapp.com/assets/images/university-of-greenwich-high-resolution-logo-color-on-transparent-background.png)
 
 A social network system for the student community at the University of Greenwich - Vietnam with basic functions such as account management, posting, commenting, interacting, and chatting with other users... Work The project is still at an academic level, created by students.
@@ -22,7 +22,7 @@ A social network system for the student community at the University of Greenwich
 ## 🛠 Technology
 Javascript, HTML, CSS, PHP, Bootstap, JQuery, MySQL
 
-## Accounts test
+## 👤 Accounts test
 
 | Username         |   Password   |
 | -----------------|--------------|
@@ -36,7 +36,7 @@ Javascript, HTML, CSS, PHP, Bootstap, JQuery, MySQL
 ## 🔗 Link application
 - https://greenwichsn.000webhostapp.com
 
-## License
+## 📑 License
 
 - [MIT](https://raw.githubusercontent.com/zolmkoz/Greenwich/main/LICENSE)
 
